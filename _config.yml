@@ -8,3 +8,4 @@ twitter_username: rickysu
 description: 如果有任何需求，或发现任何错误，请在GitHub提交Issue和PR。</br>For any requests and issues, please submit Issue or PR on GitHub.
 # Build settings
 markdown: kramdown
+permalink: /:title
