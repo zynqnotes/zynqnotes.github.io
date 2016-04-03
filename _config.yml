@@ -5,6 +5,6 @@ baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://zynqnotes.com" # the base hostname & protocol for your site
 github_username:  zynqnotes
 twitter_username: rickysu
-description: 如果有任何需求，或发现任何错误，请在GitHub提交Issue和PR。For any requests and issues, please submit Issue or PR in GitHub.
+description: 如果有任何需求，或发现任何错误，请在GitHub提交Issue和PR。</br>For any requests and issues, please submit Issue or PR on GitHub.
 # Build settings
 markdown: kramdown
