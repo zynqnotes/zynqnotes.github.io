@@ -1,11 +1,9 @@
 ---
 layout: page
-title: About
+title: 关于本站
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
+ZYNQ 是一款 Xilinx 出品的 ARM 和 FPGA 相结合的 SoC。它的后续家族还有异构的 ZYNQ UltraScale+ MPSoC。这个网站将记录一些与ZYNQ相关的信息。
 
-You can find the source code for the Jekyll new theme at: [github.com/jglovier/jekyll-new](https://github.com/jglovier/jekyll-new)
-
-You can find the source code for Jekyll at [github.com/jekyll/jekyll](https://github.com/jekyll/jekyll)
+网站的维护者是 [Ricky Su](http://www.rickysu.com)。另一个兄弟网站叫叫[FPGANotes](http://www.fpganotes.com)
