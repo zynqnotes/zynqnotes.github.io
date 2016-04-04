@@ -7,7 +7,7 @@ permalink: /tags/
 <ul class="tags-box">
 {% if site.posts != empty %}
 	{% for tag in site.tags %}
-		{% if tag[1].size > 1%}
+		{% if tag[1].size > 0%}
 			<a href="#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">{{ tag[0] }}<span class="size"> {{ tag[1].size }}</span></a>
 		{% endif %}
 	
@@ -16,7 +16,7 @@ permalink: /tags/
 
 <ul class="tags-box">
 	{% for tag in site.tags %}
-		{% if tag[1].size > 1%}
+		{% if tag[1].size > 0%}
 			<li  id="{{ tag[0] }}">{{ tag[0] }}</li>
 			{% for post in tag[1] %}
 				<time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time> &raquo;
