@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Xapp1082 v4 心得"
-date:   2016-04-05 18:00:00 0800
+date:   2016-04-05 08:00:00
 categories: Experiences
 tags:
 - 1000Base-X
