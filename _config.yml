@@ -5,7 +5,7 @@ baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://zynqnotes.com" # the base hostname & protocol for your site
 github_username:  zynqnotes
 twitter_username: rickysu
-description: 如果有任何需求，或发现任何错误，请在GitHub提交Issue和PR。</br>For any requests and issues, please submit Issue or PR on GitHub.
+description: 如果有任何需求，或发现任何错误，请在<a href=https://github.com/zynqnotes/zynqnotes.github.io/>GitHub</a>提交<a href=https://github.com/zynqnotes/zynqnotes.github.io/issues>Issue</a>和<a href=https://github.com/zynqnotes/zynqnotes.github.io/pulls>PR</a>。</br>For any requests and issues, please submit <a href=https://github.com/zynqnotes/zynqnotes.github.io/issues>Issue</a> or <a href=https://github.com/zynqnotes/zynqnotes.github.io/pulls>PR</a> on <a href=https://github.com/zynqnotes/zynqnotes.github.io>GitHub</a>.
 # Build settings
 markdown: kramdown
 permalink: /:title
