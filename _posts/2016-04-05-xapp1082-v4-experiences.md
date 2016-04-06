@@ -38,7 +38,7 @@ Xapp1082 已经发布到第四个版本，曾经需要对内核驱动打补丁�
 
 5. 如果需要让 u-boot 也能使用 PL 侧的 PHY，需要给 u-boot 打一个补丁
     - 如果需要打补丁，需要使用步骤3指定的方法指定 u-boot 源文件位置
-    - 补丁地址参考[这里](TODO)
+    - 补丁地址参考[这里](https://github.com/imrickysu/u-boot-xlnx/commit/ea72a0b1eb02cff060c4ea85b73d5a74479efd50)
 
 6. 在 Kernel 中 Enable Xilinx PHY Driver
     - 进行 Kernel 配置 `petalinux-config -c kernel`
