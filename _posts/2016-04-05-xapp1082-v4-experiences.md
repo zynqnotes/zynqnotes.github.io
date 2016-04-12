@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Xapp1082 v4 心得"
+title:  "XAPP1082 v4 调试心得"
 date:   2016-04-05 08:00:00
 categories: Experiences
 tags:
