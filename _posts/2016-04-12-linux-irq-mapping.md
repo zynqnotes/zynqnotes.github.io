@@ -308,7 +308,7 @@ static int intr_example_remove(struct platform_device *pdev)
 
 #ifdef CONFIG_OF
 static struct of_device_id intr_example_of_match[] = {
-	{ .compatible = "xlnx,xps-timer-1.00.a", },
+	{ .compatible = "ricky,xps-timer-1.00.a", },
 	{ /* end of list */ },
 };
 MODULE_DEVICE_TABLE(of, intr_example_of_match);
