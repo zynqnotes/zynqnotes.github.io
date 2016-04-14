@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "最新 Linux Kernel 中断号的映射"
+title:  "Linux 中注册中断"
 date:   2016-04-12 08:00:00
 categories: Experiences
 tags:
@@ -58,6 +58,7 @@ tags:
 一个使用 AXI Timer 作为 Custom IP 的例子。
 
 device-tree in pl.dtsi
+
 ```
 / {
 	amba_pl: amba_pl {
@@ -86,6 +87,7 @@ device-tree in pl.dtsi
 ```
 
 Kernel Module
+
 ```c
 /*  intr_example.c - The simplest kernel module.
  */
