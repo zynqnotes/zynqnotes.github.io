@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "加快在 PetaLinux 中调试的进度"
+title:  "加快调试 PetaLinux 速度"
 date:   2016-04-27 08:00:00
 categories: Experiences
 tags:
@@ -8,10 +8,22 @@ tags:
 - Debug
 ---
 
-以下为几个常用的加快调试速度的小方法。
+在调试 PetaLinux 和运行在 PetaLinux 上的软件的时候，经常会涉及到不停地重新编译、加载到板上的流程，有时效率比较低，以下为几个常用的加快调试速度的小方法。
 
 ## 善用仿真 ##
 使用 QEMU 可以仿真与硬件无关的部分，包括内核相关的代码和应用代码。编译Kernel，启动仿真，比将代码下载到开发板上快不少，而且在没有开发板的时候也能调试。
+
+- `petalinux-boot --qemu --kernel` 可以启动对 Kernel 的仿真
+- `petalinux-boot --qemu --u-boot` 可以启动对 u-boot 的仿真
+
+在启动对Kernel的仿真时，会先启动一个 u-boot 的仿真，如果 u-boot 能从以太网加载 kernel，就让 u-boot 加载。如果不想让 u-boot 加载 kernel，可以退出第一个Qemu流程 `Ctrl+A+X`，然后第二个 Qemu 流程会自动启动，直接加载 Kernel。
+
+在2015.4的 PetaLinux 中似乎有个小 Bug：在自己建立的工程中如果用上述命令仿真，PetaLinux会抱怨`pre-built`目录中的文件找不到。我的解决方法是把 `image/linux` 目录软链接到 PetaLinux 所期望的位置。
+
+```
+mkdir -p pre-built/linux
+ln -s image/linux prebuilt/linux/images
+```
 
 ## 选择性编译 ##
 petalinux-build 默认情况下会将 Kernel, App, device-tree, u-boot, FSBL 都重新编译一遍。
