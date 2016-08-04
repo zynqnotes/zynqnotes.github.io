@@ -8,7 +8,8 @@ tags:
 - GCC
 ---
 
-在 SDK 中编译一个 Standalone App 的时候，gcc compile 通过，但是到 link 阶段报错：
+在 SDK 中编译一个 Standalone App 的时候，gcc compile 通过，但是到 link 阶段报错。
+
 
 ```
 Building target: hello.elf
@@ -21,6 +22,7 @@ aarch64-none-elf-gcc -Wl,-T -Wl,../src/lscript.ld -L../../hello_bsp/psu_cortexa5
 collect2: error: ld returned 1 exit status
 make: *** [hello.elf] Error 1
 ```
+
 
 Google 后发现一篇文章解释得很好：[Relocation truncated to fit - WTF?](https://www.technovelty.org/c/relocation-truncated-to-fit-wtf.html)
 
