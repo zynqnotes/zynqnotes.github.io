@@ -9,6 +9,7 @@ tags:
 ---
 
 在 SDK 中编译一个 Standalone App 的时候，gcc compile 通过，但是到 link 阶段报错：
+
 ```
 Building target: hello.elf
 Invoking: ARM A53 gcc linker
