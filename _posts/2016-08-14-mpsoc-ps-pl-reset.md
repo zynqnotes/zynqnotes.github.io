@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "ZYNQ to MPSoC: Reset Signal from PS to PL"
-date:   2016-08-014 08:00:00
+date:   2016-08-14 08:00:00
 categories: Experiences
 tags:
 - MPSoC
