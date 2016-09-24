@@ -126,3 +126,10 @@ tags:
 综合以上情况，可以发现2016.2中MPSoC的FSBL并不支持由WDT引发的错误进入MultiBoot的流程，寻找后面的Golden Boot。它只会报告错误原因，帮助用户查找错误。
 
 
+## 重点回顾 ##
+
+- 在Vivado中配置MPSoC PS，打开`I/O Configuration`中的`SWDT0`可以让FSBL支持看门狗功能。SWDT0是LPD WDT。
+- 默认看门狗超时时间是100秒。可以修改`XFSBL_WDT_EXPIRE_TIME`来修改超时时间。
+- 如果FSBL不需要看门狗，可以在`xfsbl_config.h`定义`FSBL_WDT_EXCLUDE_VALUE` = 1
+- 这个版本的FSBL在遇到看门狗超时的情况下将Multiboot寄存器＋1，重启，也就是寻找下一个可执行的Image。下一个Image中如果也包含同样的FSBL，会报告上一次重启的错误原因信息，然后死锁，而不是进行后续的Multiboot。
+
