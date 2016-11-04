@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "U-boot使用的Device Tree是从哪里来的？"
-date:   2016-09-24 12:00:00
+date:   2016-11-04 12:00:00
 categories: Experiences
 tags:
 - PetaLinux
