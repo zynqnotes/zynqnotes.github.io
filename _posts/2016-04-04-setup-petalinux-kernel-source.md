@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "我怎样设置 PetaLinux 的 Kernel Source"
+title:  "怎样设置 PetaLinux 2016.3 的外部 Kernel Source"
 date:   2016-04-04 21:55:56
 categories: Experiences
 tags:
@@ -27,6 +27,6 @@ tags:
 
 根据以上的种种特性，以及应用时的不同场景产生的不同需求，以下是我的使用方法
 
-- 我的电脑里总是会存一份独立的 Kernel/u-boot 的 Clone，总是随着 GitHub 上的版本保持到最新，所有后续的操作都利用这份源文件，而不是直接和 GitHub 打交道。
+- 我的电脑里总是会存一份独立的 Kernel/U-Boot 的 Clone，总是随着 GitHub 上的版本保持到最新，所有后续的操作都利用这份源文件，而不是直接和 GitHub 打交道。
 - 对于要做比较多的定制以及比较长时间的开发的项目，为了和别的项目区分开，使用component模式让这个 PetaLinux 工程独占一份带 git history 的 Kernel 源文件，在这个基础上做自己的 branch。
 - 很少用 remote 模式，也很少用软链接的component模式，因为他们都将工程与源代码分割开来了。
