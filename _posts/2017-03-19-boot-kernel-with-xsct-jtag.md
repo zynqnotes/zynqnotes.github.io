@@ -28,7 +28,7 @@ XSCT 是 SDK 的命令行工具，它底层包含了 XSDB 的所有功能，并�
 
 XSCT 脚本：load_linux.tcl
 
-```tcl
+```ruby
 connect # 连接 hw_server
 target 9 # PSU 主模块
 source psu_init.tcl # 导入但不执行 psu_init.tcl
