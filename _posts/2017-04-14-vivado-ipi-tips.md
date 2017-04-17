@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "用 IPI 搭建 ZYNQ 工程常见问题、误区和技巧"
-date:   2017-03-19 12:00:00
+date:   2017-04-14 12:00:00
 categories: Experiences
 tags:
 - Vivado
@@ -10,16 +10,16 @@ tags:
 - MPSoC
 ---
 
-# Port and Interface
+# Port vs. Interface
 
 在 IPI Diagram 中，右键单击空白区域，会出现`Create Port`和`Create Interface Port`的选项。 Port 和 Interface 有什么区别呢？
 
-- Interface 是带协议的一组总线，比如 AXI, AXI Lite, AXI Stream 都属于 Interface。 Interface 是不同意义信号的组合。
+- Interface 是带协议的一组接口，比如 AXI, AXI Lite, AXI Stream 都属于 Interface。 Interface 是不同意义信号的组合。
 - Port 是单根信号线，或者同一用途信号线的组合 (vector)，比如数据总线`data[31:0]`只包含数据。 在`Create Port`对话框可以定义信号的 type，比如时钟、复位，或者其他。
 
 在实际的操作中，我们很少手工创建一个 Port 或者 Interface，而是选择已有 IP 的某个 Port，右键后选择 `Make External`，这样就会自动创建与它相同类型的 Port/Interface，然后连接。
 
-# Interface vs. bus
+# Interface vs. Bus
 
 - Interface 翻译为接口，只规定信号组合的规范，而不定义连接的拓扑结构。
 - Bus 翻译为总线，稍微有点含糊，根据上下文不同，有时可以指 Interface, 有时候又可以指某种拓扑结构。
