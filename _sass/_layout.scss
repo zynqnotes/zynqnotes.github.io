@@ -215,8 +215,8 @@
     h2 {
         font-size: 24px;
         color: $brand-color;
-        margin-bottom: $spacing-unit;
-        
+        margin-bottom: $spacing-unit /2;
+
         @include media-query($on-laptop) {
             font-size: 22px;
         }
@@ -224,7 +224,8 @@
 
     h3 {
         font-size: 24px;
-
+        margin-bottom: $spacing-unit /2;
+        
         @include media-query($on-laptop) {
             font-size: 22px;
         }
