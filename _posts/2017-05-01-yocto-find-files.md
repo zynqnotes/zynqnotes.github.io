@@ -10,11 +10,11 @@ tags:
 - MPSoC
 ---
 
-# Background
+## Background
 
 Yocto 是业界流行的嵌入式 Linux 编译框架，很多公司都在使用它。Yocto Project 的 Advisory Board 可以在[这里](https://www.yoctoproject.org/about/governance/admininstrative-leadership)找到，其中主要是 CPU 芯片生产商 (Intel, Xilinx, etc)、操作系统提供商 (Wind River, Linaro, etc) 和系统集成应用公司(Juniper Networks, Dell)。除了 Advisory Board 里的公司，很多公司也都已经或者正准备将开发环境转移到 Yocto 平台上。
 
-# Yocto
+## Yocto
 
 Yocto 的好处是它提供了一套完整的框架，不仅可以包含Linux中每个组成原件的编译和打包，还可以编译工具链、生成软件开发SDK、增量打补丁等。它避免了每个厂商自己维护一套流程系统，拼装出一套自己定制的Linux。用 Yocto 的话，流程已经确定好了，只需要在它的框架下根据自己的需要定制即可。熟悉了这套流程，切换平台也很容易。
 
@@ -22,11 +22,11 @@ Yocto 的好处是它提供了一套完整的框架，不仅可以包含Linux中
 
 Xilinx PetaLinux 从 2016.4 开始由原先基于 Make 的自定义流程向 Yocto 迁移。PetaLinux 工具仍然保留着，比如 petalinux-create, petalinux-build 等命令仍然可以使用。如果直接使用 Xilinx 提供的所有组件不需要修改，那么迁移到 2016.4 对用户来说的感觉就只是编译时间变了(可能变慢可能变快，根据项目和电脑的配置可能不同)、需要预留的磁盘空间变大了，其它使用流程并没有特别的变化；如果需要做进一步的定制，比如需要在 rootfs 中增加一个库、一个工具，或需要修改 u-boot 源代码等，都会涉及到和 Yocto 打交道的地方。有很多常用操作已经在 UG1144 中有覆盖，但也有很多其它使用中的疑问，最近我会写一些常见问题和解决方法。
 
-# Log 在哪里
+## Log 在哪里
 
 之前的 PetaLinux 编译过程只产生一个 log 文件，存放在 `build/build.log` 文件中。现在的 `build/build.log` 中只有有限的信息，每一个组件的具体编译信息都在它自己的目录中。通常 Yocto 也会有提示说，详细的错误信息参加 xxx 文件，但是只看提示的文件却不一定能找到真正的问题根源，因为 Yocto 将同一个 app 不同编译步骤的 log 存在不同文件中，所以有可能前一步出错导致后续步骤错误被报告出来，但问题根源还需要到前一个步骤的 log 文件中去找。
 
-## 例子：pmu-firmware 编译失败
+### 例子：pmu-firmware 编译失败
 
 在进行 `petalinux-build` 的时候遇到 pmu-firmware 编译失败是很多人第一次运行基于 Yocto 的 PetaLinux 时遇到的问题。从原理上分析，如果其它组件都能编译通过，唯独 pmu-firmware 失败，比较大的可能性是因为 pmu-firmware 是基于 PMU 硬件的，而 PMU 的本质是 MicroBlaze，其他组件都是基于 Cortex-A53 的。那么编译器工具链的问题可能性很大。
 
