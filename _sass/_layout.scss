@@ -211,30 +211,20 @@
 .post-content {
     margin-bottom: $spacing-unit;
 
-    h1 {
-        font-size: 24px;
-        color: $brand-color;
-
-        @include media-query($on-laptop) {
-            font-size: 22px;
-        }
-    }
-
-
 
     h2 {
         font-size: 24px;
-
+        color: $brand-color;
         @include media-query($on-laptop) {
             font-size: 22px;
         }
     }
 
     h3 {
-        font-size: 20px;
+        font-size: 24px;
 
         @include media-query($on-laptop) {
-            font-size: 18px;
+            font-size: 22px;
         }
     }
 
