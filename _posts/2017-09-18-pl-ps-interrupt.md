@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "让 Linux 接收来自 PL 的自定义中断信号"
+title:  "中断（一）：让 Linux 接收来自 PL 的自定义中断信号"
 date:   2017-09-18 12:00:00
 categories: Experiences
 tags:
