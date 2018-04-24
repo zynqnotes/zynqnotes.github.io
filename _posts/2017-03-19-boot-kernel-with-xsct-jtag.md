@@ -57,3 +57,9 @@ con # 继续运行 U-Boot
 # U-Boot 启动 Linux 命令
 
 假设 Linux Image 已经被加载到内存地址 0x10000000，那么只需要执行`bootm 0x10000000`就可以进行启动 Linux 的动作。
+
+# 更新
+
+Production Silicon 默认 JTAG 扫描时不显示 PMU，这样 PMU Firmware 就没办法下载进去。但 2017.3 之后 U-boot 和 Linux 都依赖 PMUFW。所以需要增加让 JTAG 能显示出 PMU 的指令。
+
+更新的脚本请参考 [Github Gist](https://gist.github.com/imrickysu/b911be34cf7fffc1b9259610095973fd)
