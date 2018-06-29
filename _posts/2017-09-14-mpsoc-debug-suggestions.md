@@ -59,3 +59,13 @@ Yocto 的编译需要占用巨大的磁盘空间，通常一个工程编译一�
 ### 保持 Vivado 中的外设设置 和 PetaLinux 中的一致 
 
 曾经出现过一些情况，由于 PetaLinux 的 u-boot 默认会编译 mmc 这条指令，而这条指令又是需要 SD 卡的外设驱动。外设驱动所需要的 SD 卡头文件，是由 Vivado 导出的 HDF 中的信息描述，如果在 Vivado 中没有打开 SD，就不会生成对应的头文件信息，PetaLinux 编译时就会出错。所以在 PetaLinux 报告此类错误的时候，请注意查看 Vivado 中是否打开了相应的外设。
+
+## PetaLinux
+
+### 关闭 CPUIDLE
+CPUIDLE 特性可以将没有处在运行状态的 Core 设置成 WFE (Wait for Event) 状态来省电。但是这种状态有一个弊端：如果 JTAG 在 CPU 省电状态的时候向 CPU 查询某些信息，没有事先产生中断唤醒 CPU，就会将系统卡死。在调试阶段经常需要用 JTAG (XSCT, hw_server, 查询 ILA, 控制 VIO 等)，所以最好在调试时关闭 CPUIDLE 属性。
+
+关闭方法参考： https://www.xilinx.com/support/answers/69143.html
+
+方法一：在 bootargs 中添加 cpuidle.off=1
+方法二：在 kernel config 中直接去掉 kernel 对 CPUIDLE 特性的支持。
