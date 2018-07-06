@@ -10,7 +10,7 @@ tags:
 
 ## 快速读取一个模块的所有寄存器
 
-'''
+```
 xsct% target 8
 xsct% target
   1  PS TAP
@@ -99,14 +99,13 @@ rcvr_fifo_trigger_level0: 00000020                modem_ctrl: 00000000
               flow_delay: 00000000    tx_fifo_trigger_level0: 00000020
      rx_fifo_byte_status: 00000000
 
-
-'''
+```
 
 ## 读取 A53 内部特殊寄存器
 
 比如要读取 `sctlr_el1`这个没有地址的 ARM 内部寄存器。
 
-'''
+```
 xsct% target 9
 xsct% target
   1  PS TAP
@@ -156,6 +155,4 @@ xsct% rrd sys 1
  sctlr_el3:         00c8181f   actlr_el3:         00000000
    scr_el3:         00000731  sder32_el3:         00000000
   cptr_el3:         00000000    mdcr_el3:         00000000
-
-
-'''
+```
