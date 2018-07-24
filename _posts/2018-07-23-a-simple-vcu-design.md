@@ -41,6 +41,23 @@ tags:
 4. `petalinux-build` 生成各组件。
 5. `cd images/linux; petalinux-package --boot --fsbl zynqmp_fsbl.elf --u-boot --fpga xx.bit`  请将 xx.bit 替换为这个目录下 bit 的文件名。
 
+### 说明
+packagegroup-petalinux-gstreamer 具体包含哪些内容，可以在它的描述中看到
+
+```
+# <petalinux_install_dir>/components/yocto/source/aarch64/layers/meta-petalinux/recipes-core/packagegroups/packagegroup-petalinux-gstreamer.bb
+
+GSTREAMER_PACKAGES = " \
+   gstreamer1.0 \
+   gstreamer1.0-meta-base \
+   gstreamer1.0-plugins-base \
+   gstreamer1.0-plugins-good \
+   gstreamer1.0-plugins-bad \
+   gstreamer1.0-omx \
+   gstreamer1.0-rtsp-server \
+
+```
+
 ## 运行
 
 1. 将 `images/linux` 目录下的 `BOOT.BIN` 和 `image.ub` 拷贝到 SD 卡。
