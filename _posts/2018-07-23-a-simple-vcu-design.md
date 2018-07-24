@@ -10,8 +10,9 @@ tags:
 
 ## 现有参考资料
 
-- VCU TRD, UG1250
+- [VCU TRD 2018.1](http://www.wiki.xilinx.com/Zynq+UltraScale+MPSoC+VCU+TRD+2018.1), UG1250
 - UG252
+- gstreamer: https://gstreamer.freedesktop.org/
 
 ## 逻辑设计
 
@@ -27,6 +28,10 @@ tags:
 - VCU 模块在PL侧，一共有五个AXI接口。 Block Automation 会将他们分别接在 PS 的多个 HP 通道上，保证有足够的带宽。
 - 通过双击 VCU IP，在界面中可以进行内存带宽的预估。如果进行分辨率比较低的编解码，或者编解码路数比较少，对内存带宽的需求较低，可以将多路 AXI 通过一个 AXI Interconnect 合成一个或两个 AXI，接到 HP 通道上。这样可以节省 HP 通道，以备其他需要使用 PS DDR 的逻辑 IP 使用。
 - VCU AXI 通过 AXI Interconnect 合并，最多是 4:1, 因为 VCU 的 AXI ID 宽度是4，通过 AXI Interconnect 合并 AXI 需要增加 AXI ID 位宽。 而 HP 的最大 AXI ID 只支持 6 位。
+- VCU 输入时钟尽量使用片外时钟，保证较小的 Jitter。
+
+![](images/2018/vcu_ipi.png)
+上图为 VCU Encoder 和 Decoder AXI 合并成一个 AXI 连接到 HP 后的框图
 
 ## PetaLinux
 
@@ -45,3 +50,8 @@ tags:
 5. Mount SD 卡: `mount /dev/mmcblk0p1 /mnt`
 6. 尝试从 MP4 文件解码: `gst-launch-1.0 filesrc location=xx.mp4 ! qtdemux ! h264parse ! omxh264dec ! queue max-size-bytes=0 ! filesink location=yy.yuv`
 7. 尝试从 RAW YUV Video 文件编码为 MP4: `gst-launch-1.0 filesrc location=xx.yuv ! videoparse format=nv12 width=WW height=HH framerate=20/1 ! omxh264enc ! queue ! h264parse  ! mp4mux ! filesink location=yy.mp4`
+
+### 播放编解码后视频文件
+
+- 测试播放 RAW Video: 在 PC 上安装 [ffmpeg](https://www.ffmpeg.org/download.html)，运行指令 `ffplay -f rawvideo -pixel_format nv12 -video_size WWxHH -i xx.yuv`。WW为宽度，HH为高度。因为 RAW Video 中没有视频信息，这些参数都需要手工输入。
+- MP4 视频可以用任意播放器播放。
