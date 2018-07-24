@@ -68,4 +68,6 @@ CPUIDLE 特性可以将没有处在运行状态的 Core 设置成 WFE (Wait for 
 关闭方法参考： https://www.xilinx.com/support/answers/69143.html
 
 - 方法一：在 bootargs 中添加 cpuidle.off=1
+    - 要获取现在的 bootargs，可以在Linux Console 中输入 `cat /proc/cmdline`
+    - 一般在 u-boot 中输入 `setenv bootargs "earlycon clk_ignore_unused mem=2G cpuidle.off=1"` 可以关闭 cpuidle，并启动 Linux
 - 方法二：在 kernel config 中直接去掉 kernel 对 CPUIDLE 特性的支持。
