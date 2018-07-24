@@ -72,3 +72,8 @@ GSTREAMER_PACKAGES = " \
 
 - 测试播放 RAW Video: 在 PC 上安装 [ffmpeg](https://www.ffmpeg.org/download.html)，运行指令 `ffplay -f rawvideo -pixel_format nv12 -video_size WWxHH -i xx.yuv`。WW为宽度，HH为高度。因为 RAW Video 中没有视频信息，这些参数都需要手工输入。
 - MP4 视频可以用任意播放器播放。
+
+### 测试版本
+
+- Vivado: 2018.1, 2018.2
+- FFMPEG: ffmpeg-20180708-3a2d21b-win64-static
