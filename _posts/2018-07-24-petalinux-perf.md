@@ -31,6 +31,10 @@ BENCHMARKS_EXTRAS = " \
    iperf3 \
    "
 ```
+- 如果还需要安装其他工具，可以使用 `petalinux-config -c rootfs`，然后用 `/` 搜索你所需要的包，增加它然后保存。
+- 如果以上方法找不到所需要的包，但是 Yocto 提供了这个包，可以编辑 `project-spec/meta-user/recipes-core/images/petalinux-image.bbappend`, 增加 `IMAGE_INSTALL_append = " package_name"`，然后再 `petalinux-config -c rootfs` 找到添加的包名，选择然后保存。注意以上命令 `package_name` 前有空格。
+
+
 
 # 常用功能
 
