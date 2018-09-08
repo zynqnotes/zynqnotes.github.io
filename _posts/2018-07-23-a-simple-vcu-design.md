@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "一个简单的 VCU 设计"
+title:  "VCU: 一个简单的 VCU 视频编解码设计"
 date:   2018-07-23 12:00:00
 categories: Tutorials
 tags:
@@ -16,7 +16,7 @@ tags:
 
 ## 逻辑设计
 
-1. ZCU106 project
+1. 通过 Vivado 内置的 ZCU106 模板建立一个新工程
 2. 添加 PS: `ZYNQ UltraScale+ MPSoC`
 3. 添加 VCU: `ZYNQ UltraScale+ VCU`
 4. 点击上方绿色条形中的 `Run Block Automation`, 先做 MPSoC，后做 VCU，Vivado 会自动进行连接
@@ -25,9 +25,10 @@ tags:
 
 ### 说明
 
-- VCU 模块在PL侧，一共有五个AXI接口。 Block Automation 会将他们分别接在 PS 的多个 HP 通道上，保证有足够的带宽。
-- 通过双击 VCU IP，在界面中可以进行内存带宽的预估。如果进行分辨率比较低的编解码，或者编解码路数比较少，对内存带宽的需求较低，可以将多路 AXI 通过一个 AXI Interconnect 合成一个或两个 AXI，接到 HP 通道上。这样可以节省 HP 通道，以备其他需要使用 PS DDR 的逻辑 IP 使用。
-- VCU AXI 通过 AXI Interconnect 合并，最多是 4:1, 因为 VCU 的 AXI ID 宽度是4，通过 AXI Interconnect 合并 AXI 需要增加 AXI ID 位宽。 而 HP 的最大 AXI ID 只支持 6 位。
+- VCU 模块在PL侧，一共有五个AXI接口，它们分别是两个 Encoder AXI，两个 Decoder AXI， 和一个 MCU AXI。两个 Encoder／Decoder 的 AXI 接口必须都连接到 MPSoC PS，即使只用一路编码，或者一路解码。运行时使用哪个引擎是 MCU 控制的，外界无法干预。
+- Block Automation 会将他们分别接在 PS 的多个 HP 和 HPC 通道上，以保证有足够的带宽。这里用到的 HPC 接口，其实没有使用其中的 Coherent 功能，还是当作普通 HP 来使用的。
+- 通过双击 VCU IP，在界面中可以进行内存带宽的预估。如果进行分辨率比较低的编解码，或者编解码路数比较少，对内存带宽的需求较低，可以将多路 AXI 通过一个 AXI Interconnect 合成一个或两个 AXI Interface，接到 HP 通道上。这样可以节省 HP 通道，以备其他需要使用 PS DDR 的逻辑 IP 使用。
+- 如果将 VCU AXI 通过 AXI Interconnect 合并，最多是 4:1, 因为 VCU 的 AXI ID 宽度是4，通过 AXI Interconnect 合并 AXI 需要增加 AXI ID 位宽。 而 HP 的最大 AXI ID 只支持 6 位。
 - VCU 输入时钟尽量使用片外时钟，保证较小的 Jitter。
 
 ![](images/2018/vcu_ipi.png)
@@ -77,3 +78,4 @@ GSTREAMER_PACKAGES = " \
 
 - Vivado: 2018.1, 2018.2
 - FFMPEG: ffmpeg-20180708-3a2d21b-win64-static
+
