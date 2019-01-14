@@ -10,7 +10,7 @@ tags:
 
 坊间流言，在 PetaLinux（嗯，我们的餐厅） 中的 BitBake 是一个好厨子。每次烧完菜，厨房已经清理得干干静静，以至于当做好的菜送到我手里，我们再跑去厨房看，简直就觉得这里不曾烧过菜，灶台一尘不染，垃圾桶也被清理得干干净净，可能唯一留下的线索，就是之前我点过的菜单。
 
-作为想偷师厨艺的我，跑去餐厅点这道菜，点完去厨房偷看，一眨眼的功夫，菜烧完灶台就被收拾干净了，再点一遍，再看一遍，还没学会个零头呢，这师傅又已经整理好了，让我甚是苦恼。于是就寻思着怎么能偷偷在厨房装一个摄像头，把 BitBake 的一举一动全都录下来，后来发现原来厨房里本来就又摄像头，大多数细节都能找回来。只是有时候我还想亲自观摩一下厨师切配的菜，只看录像不太够，溜进厨房时碰见他的学徒正好要收拾灶台倒垃圾，我赶紧过去送上一支烟，来来我帮你，你去旁边休息一下。得到这些垃圾就如获至宝，赶紧翻起垃圾来。通过不断地反复看大师的烧菜录像，以及翻看垃圾桶，我终于理解了大师的厨艺精妙之道，逐渐也走向通往大师之路。
+作为想偷师厨艺的我，跑去餐厅点这道菜，点完去厨房偷看，一眨眼的功夫，菜烧完灶台就被收拾干净了，再点一遍，再看一遍，还没学会个零头呢，这师傅又已经整理好了，让我甚是苦恼。于是就寻思着怎么能偷偷在厨房装一个摄像头，把 BitBake 的一举一动全都录下来，后来发现原来厨房里本来就有摄像头，大多数细节都能找回来。只是有时候我还想亲自观摩一下厨师切配的菜，只看录像不太够，溜进厨房时碰见他的学徒正好要收拾灶台倒垃圾，我赶紧过去送上一支烟，来来我帮你，你去旁边休息一下。得到这些垃圾就如获至宝，赶紧翻起垃圾来。通过不断地反复看大师的烧菜录像，以及翻看垃圾桶，我终于理解了大师的厨艺精妙之道，逐渐也走向通往大师之路。
 
 现在，我向你透露一下我的偷师过程吧。
 
@@ -39,7 +39,16 @@ ls
 
 看一眼烧菜的主过程吧，在 log.do_compile 里
 ```
-make -j 56 KERNEL_SRC=/tmp/petalinux_2018.2_vcu_zcu106_v2_gstpatch_20190102-2019.01.02-05.29.31/work-shared/plnx-zynqmp/kernel-source O=/tmp/petalinux_2018.2_vcu_zcu106_v2_gstpatch_20190102-2019.01.02-05.29.31/work-shared/plnx-zynqmp/kernel-build-artifacts KERNEL_PATH=/tmp/petalinux_2018.2_vcu_zcu106_v2_gstpatch_20190102-2019.01.02-05.29.31/work-shared/plnx-zynqmp/kernel-source KERNEL_VERSION=4.14.0-xilinx-v2018.2 CC=aarch64-xilinx-linux-gcc   -fuse-ld=bfd LD=aarch64-xilinx-linux-ld.bfd   AR=aarch64-xilinx-linux-ar  O=/tmp/petalinux_2018.2_vcu_zcu106_v2_gstpatch_20190102-2019.01.02-05.29.31/work-shared/plnx-zynqmp/kernel-build-artifacts KBUILD_EXTRA_SYMBOLS=
+make -j 56 \
+KERNEL_SRC=/tmp/petalinux_2018.2_vcu_zcu106_v2_gstpatch_20190102-2019.01.02-05.29.31/work-shared/plnx-zynqmp/kernel-source \
+O=/tmp/petalinux_2018.2_vcu_zcu106_v2_gstpatch_20190102-2019.01.02-05.29.31/work-shared/plnx-zynqmp/kernel-build-artifacts \
+KERNEL_PATH=/tmp/petalinux_2018.2_vcu_zcu106_v2_gstpatch_20190102-2019.01.02-05.29.31/work-shared/plnx-zynqmp/kernel-source KERNEL_VERSION=4.14.0-xilinx-v2018.2 \
+CC=aarch64-xilinx-linux-gcc   \
+-fuse-ld=bfd \
+LD=aarch64-xilinx-linux-ld.bfd   \
+AR=aarch64-xilinx-linux-ar \
+O=/tmp/petalinux_2018.2_vcu_zcu106_v2_gstpatch_20190102-2019.01.02-05.29.31/work-shared/plnx-zynqmp/kernel-build-artifacts \
+KBUILD_EXTRA_SYMBOLS=
 ```
 
 可以看出来，编译这个 kernel module，主要是用 make 命令，指定 KERNEL 位置等一系列参数。
