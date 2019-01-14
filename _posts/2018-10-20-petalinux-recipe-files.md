@@ -1,10 +1,11 @@
 ---
 layout: post
-title:  "PetaLinux/Yocto 的菜谱: bb 文件"
+title:  "PetaLinux工具系列(1) - Yocto 的菜谱: bb 文件"
 date:   2018-10-20 12:00:00
 categories: Experiences
 tags:
 - PetaLinux
+- BitBake
 ---
 
 ## Background
