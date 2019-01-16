@@ -1,6 +1,6 @@
 ---
 layout: post
-title: PetaLinux工具系列(2) - 看 BitBake 怎么烧菜
+title: PetaLinux探秘(2) - 看 BitBake 怎么烧菜
 categories: 
   - Experiences
 tags:
