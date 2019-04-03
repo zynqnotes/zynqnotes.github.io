@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "一文了解 MPSoC Secure Boot"
+title:  "MPSoC Secure Boot 使用安全启动加量不加价"
 categories: Tutorial
 ta:
 - MPSoC
@@ -15,6 +15,8 @@ ta:
 攥写本文，我希望能让大家看到
 1. 在产品中加入安全功能通常都是有需求的、有价值的，而且需求会越来越大。
 2. 为产品添加安全功能，达到一定的安全级别，流程步骤和复杂程度是可控的。
+
+就我了解到的情况，大多数使用 ZYNQ-7000 或 ZYNQ UltraScale+ MPSoC 的用户并没有打开 Secure Boot 功能。如果你能看完全文，照着步骤做一下，打开安全启动功能，就能“免费”提升产品安全等级，就是“**加量不加价**”啦。
 
 上面讲到“达到一定的安全级别”，是因为安全保护是有代价的，黑客破解也是有代价的，我们需要保证以尽可能低的安全保护的代价，使黑客破解系统的代价比他攻破系统能获取到的价值更高，这样黑客就没有攻击系统的动力，达到了自我保护的目的。
 
@@ -259,7 +261,7 @@ the_ROM_image:
 
 从上面的BIF的例子中可以看到：
 
-- 所哟 Partition 都加密了，每个 Partition 都对应了一个 nky 文件，这些 nky 文件的 Key 0 一致， Key 1 各不相同。Key 0 解出 Key 1，然后 Key 1 解密对应的 Partition。
+- 所有 Partition 都加密了，每个 Partition 都对应了一个 nky 文件，这些 nky 文件的 Key 0 一致， Key 1 各不相同。Key 0 解出 Key 1，然后 Key 1 解密对应的 Partition。
 - 当 PMUFW 和 FSBL 都加密的情况下，PMUFW 需要由 FSBL 来加载，而不是由 CSU BootROM 来加载，所以使用了 `[destination_cpu = pmu]`，而不是`[pmufw_image]`。参考 [AR 70622](https://www.xilinx.com/support/answers/70622.html)
 - Bit 文件需要加密的情况下，Bit 要写在 ATF (bl31.elf) 的前面，因为解密 Bit 需要用的 OCM 空间与存放 ATF 的空间是同一个。参考 UG1137 v8.0 P114
 
